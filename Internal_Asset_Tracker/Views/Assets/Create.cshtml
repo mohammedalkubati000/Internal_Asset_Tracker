@@ -1,0 +1,53 @@
+@model Asset
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container">
+    <h1>Create  Asset </h1>
+    <form asp-action="Create" method="post">
+        <div class="text-danger" asp-validation-summary="All">
+        </div>
+         
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SerialNumber" class="control-label"></label>
+            <input asp-for="SerialNumber" class="form-control" />
+            <span class="text-danger" asp-validation-for="SerialNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Category" class="control-label"></label>
+            <input asp-for="Category" class="form-control" />
+            <span class="text-danger" asp-validation-for="Category"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <input asp-for="Status" class="form-control" />
+            <span class="text-danger" asp-validation-for="Status"></span>
+        </div>
+
+               
+           
+
+               
+                
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+
+    </form>
+    <div>
+                <a asp-action="Index" >Back to List</a>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
