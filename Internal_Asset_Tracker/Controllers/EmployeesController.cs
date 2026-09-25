@@ -1,104 +1,98 @@
-
-using Internal_Asset_Tracker.Data;
+﻿using Internal_Asset_Tracker.Data;
 using Internal_Asset_Tracker.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections;
 
 namespace Internal_Asset_Tracker.Controllers
 {
-    public class AssetsController : Controller
+    public class EmployeesController : Controller
     {
-        // 
         private readonly AppDbContext _db;
 
-        public AssetsController(AppDbContext db)
+        public EmployeesController(AppDbContext db) 
         {
-            _db = db;
+            _db = db;      
+        
         }
-
 
         public ActionResult Index()
         {
             //Entity Framework Approach
-            IEnumerable<Asset> depts = _db.Assets.ToList();
+            IEnumerable<Employee> depts = _db.Employees.ToList();
             return View(depts);
         }
 
-
         [HttpGet]
+
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Asset asset)
+
+        public ActionResult Create(Employee employee)
         {
             if (ModelState.IsValid)
             {
-                _db.Assets.Add(asset);
+                _db.Employees.Add(employee);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Please fill all the required fields.");
-            return View(asset);
+            return View(employee);
         }
 
         [HttpGet]
+
         public ActionResult Edit(int id)
         {
-            var asset = _db.Assets.Find(id);
-            if (asset == null)
+            var employee = _db.Employees.Find(id);
+            if (employee == null)
             {
                 return NotFound();
             }
-            return View(asset);
+            return View(employee);
         }
 
-
-
         [HttpPost]
-        public ActionResult Edit(Asset asset)
+
+        public ActionResult Edit(Employee employee)
         {
             if (ModelState.IsValid)
             {
-                _db.Assets.Update(asset);
+                _db.Employees.Update(employee);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Please fill all the required fields.");
-            return View(asset);
+            return View(employee);
         }
-
 
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var asset = _db.Assets.Find(id);
-            if (asset == null)
+            var employee = _db.Employees.Find(id);
+            if (employee == null)
             {
                 return NotFound();
             }
-            return View(asset);
+            return View(employee);
         }
 
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var asset = _db.Assets.Find(id);
-            if (asset == null)
+            var employee = _db.Employees.Find(id);
+            if (employee == null)
             {
                 return NotFound();
             }
-            _db.Assets.Remove(asset);
+            _db.Employees.Remove(employee);
             _db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
+        }   
 
 
     }
-
 }
