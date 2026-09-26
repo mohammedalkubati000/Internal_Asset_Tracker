@@ -10,37 +10,42 @@
     <form asp-action="Create" method="post">
         <div class="text-danger" asp-validation-summary="All">
         </div>
-
+        <!--            
         <div class="form-group">
             <label asp-for="Id" class="control-label"></label>
             <input asp-for="Id" class="form-control" />
             <span class="text-danger" asp-validation-for="Id"></span>
         </div>
+        -->
         <div class="form-group">
-            <label asp-for="Asset" class="control-label"></label>
-            <input asp-for="Asset" class="form-control" />
-            <span class="text-danger" asp-validation-for="Asset"></span>
+            <label asp-for="AssetId" class="control-label">Asset</label>
+            <select asp-for="AssetId" class="form-control" asp-items="ViewBag.AssetId">
+                <option value="">-- Select Asset --</option>
+            </select>
+            <span class="text-danger" asp-validation-for="AssetId"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Employee" class="control-label"></label>
-            <input asp-for="Employee" class="form-control" />
-            <span class="text-danger" asp-validation-for="Employee"></span>
+            <label asp-for="EmployeeId" class="control-label">Employee</label>
+            <select asp-for="EmployeeId" class="form-select" asp-items="ViewBag.EmployeeId">
+                <option value="">-- Select Employee --</option>
+            </select>
+            <span class="text-danger" asp-validation-for="EmployeeId"></span>
         </div>
         <div class="form-group">
             <label asp-for="AssignedDate" class="control-label"></label>
-            <input asp-for="AssignedDate" class="form-control" />
+            <input asp-for="AssignedDate" class="form-control" type="datetime-local" />
             <span class="text-danger" asp-validation-for="AssignedDate"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="ReturnDate" class="control-label"></label>
-            <input asp-for="ReturnDate" class="form-control" />
+            <input asp-for="ReturnDate" class="form-control" type="datetime-local" />
             <span class="text-danger" asp-validation-for="ReturnDate"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="IsActive" class="control-label"></label>
-            <input asp-for="IsActive" class="form-control" />
-            <span class="text-danger" asp-validation-for="IsActive"></span>
+        <div class="form-group form-check my-2">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+            </label>
         </div>
            
 

@@ -1,6 +1,8 @@
 ﻿using Internal_Asset_Tracker.Data;
 using Internal_Asset_Tracker.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internal_Asset_Tracker.Controllers
 {
@@ -16,14 +18,17 @@ namespace Internal_Asset_Tracker.Controllers
         public ActionResult Index()
         {
             //Entity Framework Approach
-            IEnumerable<AssetAssignment> depts = _db.AssetAssignments.ToList();
+            IEnumerable<AssetAssignment> depts = _db.AssetAssignments.Include(a => a.Asset).Include(a => a.Employee).ToList();
             return View(depts);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.AssetId = new SelectList(_db.Assets, "Id", "Name");
+            ViewBag.EmployeeId = new SelectList(_db.Employees, "Id", "FullName");
             return View();
+            
         }
 
         [HttpPost]

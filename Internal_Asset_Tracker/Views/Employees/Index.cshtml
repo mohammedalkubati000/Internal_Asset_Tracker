@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<Employee>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employee";
+    int rowNum = 1;
 }
 <div class="container mt-4">
     <div class="text-end">
         <a asp-action="Create" class="btn btn-primary"> New Employee </a>
     </div>
-    <h1>Index</h1>
+    <h1>Employee</h1>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>FullName</th>
                 <th>Email</th>
                 <th>DepartmentId</th>
@@ -23,13 +24,17 @@
         {
 
         <tr>
-                    <td>@emp.Id</td>
+                    <td>@(rowNum++)</td>
                     <td>@emp.FullName</td>
                     <td>@emp.Email</td>
-                    <td>@emp.DepartmentId</td>
+                    <td>@(emp.Department?.Name ?? emp.DepartmentId.ToString())</td>
                     <td>
+                        <!--
                         <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a> | |
                         <a asp-action="Delete" asp-route-id="@emp.Id">Delete</a>
+                        -->
+                        <a asp-action="Edit" asp-route-uuid="@emp.Id" class="btn btn-warning"> Edit  </a>
+                        <a asp-action="Delete" asp-route-uuid="@emp.Id" class="btn btn-danger"> Delete  </a>
                     </td>
                 </tr>
             }

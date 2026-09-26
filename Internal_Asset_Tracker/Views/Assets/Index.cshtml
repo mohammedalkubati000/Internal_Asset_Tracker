@@ -33,9 +33,13 @@
                 <td>@emp.Status</td>
 
           
-            <td>
-                    <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a> | |
-                    <a asp-action="Delete" asp-route-id="@emp.Id">Delete</a>
+                    <td>
+                        <!--
+                        <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a> | |
+                        <a asp-action="Delete" asp-route-id="@emp.Id">Delete</a>
+                        -->
+                        <a asp-action="Edit" asp-route-uuid="@emp.Id" class="btn btn-warning"> Edit  </a>
+                        <a asp-action="Delete" asp-route-uuid="@emp.Id" class="btn btn-danger"> Delete  </a>
             </td>
         </tr>
 }

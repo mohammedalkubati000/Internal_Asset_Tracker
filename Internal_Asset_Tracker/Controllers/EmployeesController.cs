@@ -1,6 +1,7 @@
 ﻿using Internal_Asset_Tracker.Data;
 using Internal_Asset_Tracker.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Internal_Asset_Tracker.Controllers
 {
@@ -17,7 +18,7 @@ namespace Internal_Asset_Tracker.Controllers
         public ActionResult Index()
         {
             //Entity Framework Approach
-            IEnumerable<Employee> depts = _db.Employees.ToList();
+            IEnumerable<Employee> depts = _db.Employees.Include(e => e.Department).ToList();
             return View(depts);
         }
 
