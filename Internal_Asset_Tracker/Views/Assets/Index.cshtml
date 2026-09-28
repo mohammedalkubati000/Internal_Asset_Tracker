@@ -8,7 +8,7 @@
 <div class="text-end">
     <a asp-action="Create" class="btn btn-primary"> New Asset </a>
 </div>
-<h1>Index</h1>
+    <h1>Assets</h1>
 
 <table class="table table-striped">
     <thead>
@@ -38,8 +38,8 @@
                         <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a> | |
                         <a asp-action="Delete" asp-route-id="@emp.Id">Delete</a>
                         -->
-                        <a asp-action="Edit" asp-route-uuid="@emp.Id" class="btn btn-warning"> Edit  </a>
-                        <a asp-action="Delete" asp-route-uuid="@emp.Id" class="btn btn-danger"> Delete  </a>
+                        <a asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-warning "> Edit  </a>
+                        <a asp-action="Delete" asp-route-id="@emp.Id" class="btn btn-danger"> Delete  </a>
             </td>
         </tr>
 }
